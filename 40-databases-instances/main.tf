@@ -69,8 +69,8 @@ resource "terraform_data" "bootstrap_redis" {
   }
 
  provisioner "file" {
-  source = "bootstrap.sh"
-  destination = "/tmp/bootstrap.sh"
+  source = "bootstrap.sh" #local file path
+  destination = "/tmp/bootstrap.sh" #destination file path
  }
 
  provisioner "remote-exec" {

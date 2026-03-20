@@ -17,3 +17,7 @@ locals {
 locals {
   user_sg_id = data.aws_ssm_parameter.user_sg_id.value
 }
+
+locals {
+  redis_sg_id = data.aws_ssm_parameter.redis_sg_id.value
+}
