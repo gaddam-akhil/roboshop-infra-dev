@@ -12,7 +12,7 @@ resource "aws_instance" "bastion" {
   #EBS block tags
   tags = merge(
     {
-        Name = "${var.project_name}-${var.environment}-bastion"
+        Name = "${var.project}-${var.environment}-bastion"
     },
     local.common_tags
   )
@@ -20,7 +20,7 @@ resource "aws_instance" "bastion" {
 
   tags = merge(
     {
-        Name = "${var.project_name}-${var.environment}-bastion"
+        Name = "${var.project}-${var.environment}-bastion"
     },
     local.common_tags
   )
