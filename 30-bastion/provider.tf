@@ -9,7 +9,7 @@ terraform {
 
 backend "s3" {
     bucket         = "gaddam-remote-state-dev" # Replace with your bucket name
-    key            = "remote-state-dev-vpc" # Path within the bucket
+    key            = "remote-state-dev-sg-bastion" # Path within the bucket
     region         = "us-east-1" # Replace with your AWS region
     encrypt        = true
     use_lockfile   = true # <--- Enables native S3 locking

@@ -1,0 +1,17 @@
+mongodb:
+- name: bastion_internet # my_ip adhe mana laptop unchi connect avvadam
+  port: 22
+  src: internet                     #traffic coming from internet 
+  dest: bastion
+- name: mongodb_bastion             #mongodb accepting connections from bastion
+  port: 27017
+  src: bastion                     #traffic coming from bastion
+  dest: mongodb
+- name: mongodb_catalogue           #mongodb accepting connections from catalogue
+  port: 27017
+  src: catalogue                    #traffic coming from catalogue
+  dest: mongodb
+- name: mongodb_user                #user accepting connections from user
+  port: 27017
+  src: user                          #traffic coming from user
+  dest: mongodb
