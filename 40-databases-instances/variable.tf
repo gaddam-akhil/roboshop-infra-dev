@@ -5,3 +5,11 @@ variable "project_name" {
 variable "env" {
     default = "dev"
 }
+
+variable "zone_id" {
+   default = "Z0591822XHL3475C19P0"
+}
+
+variable "domain_name" {
+    default = "gaddam.online"
+}
