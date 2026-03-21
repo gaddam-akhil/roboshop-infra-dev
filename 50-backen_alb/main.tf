@@ -1,5 +1,5 @@
 resource "aws_lb" "backend_alb" {
-  name               = "${var.project_name}-${env}" #roboshop-dev
+  name               = "${var.project_name}-${var.env}" #roboshop-dev
   internal           = true
   load_balancer_type = "application"
   security_groups    = [local.backend_alb_sg_id]
@@ -11,13 +11,13 @@ resource "aws_lb" "backend_alb" {
   tags = merge(
      local.common_tags,
      {
-        Name = "${var.project_name}-${env}-backend_alb"
+        Name = "${var.project_name}-${var.env}-backend_alb"
      }
   )
 }
 
 resource "aws_lb_listener" "backend_alb" {
-  load_balancer_arn = aaws_lb.backend_alb.arn
+  load_balancer_arn = aws_lb.backend_alb.arn
   port              = "80"
   protocol          = "HTTP"
 
