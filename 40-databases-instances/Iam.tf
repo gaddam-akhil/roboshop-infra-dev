@@ -35,8 +35,7 @@ resource "aws_iam_policy" "mysql" {
 # Attach the policy to the user
 resource "aws_iam_role_policy_attachment" "mysql" {
   role       = aws_iam_role.mysql.name
-  policy_arn = "arn:aws:ssm:us-east-1:601930231965:parameter/roboshop/dev/mysql_root_password" # Example ARN
-  #arn:aws:ssm:us-east-1:601930231965:parameter/roboshop/dev/mysql_root_password
+  policy_arn = aws_iam_policy.mysql.arn
 }
 
 # iam_instance_profile
