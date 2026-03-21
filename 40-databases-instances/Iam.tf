@@ -29,7 +29,11 @@ resource "aws_iam_role" "mysql" {
 resource "aws_iam_policy" "mysql" {
   name        = local.mysql_name_policy
   description = "A policy for ec2 instance"
-  policy      = file("policy-role-doc.json")
+  policy      = templatefile("policy-role-doc.json", {
+    env = var.env
+  })
+
+  #templatefile("${path.module}/install_app.tftpl", {
 }
 
 # Attach the policy to the user
