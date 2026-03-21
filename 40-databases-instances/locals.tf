@@ -13,6 +13,7 @@ locals {
     mysql_sg_id = data.aws_ssm_parameter.mysql_sg_ids.value
     mysql_name_iam = join("-",  [for name in [var.project_name, var.env, "mysql"] : title(name)])
     mysql_name_policy = join("-",  [for name in [var.project_name, var.env, "mysql"] : title(name)])
+    rabbitmq_sg_id = data.aws_ssm_parameter.rabbitmq_sg_ids.value
 }
 
 
