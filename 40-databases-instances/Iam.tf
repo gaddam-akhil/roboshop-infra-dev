@@ -29,7 +29,7 @@ resource "aws_iam_role" "mysql" {
 resource "aws_iam_policy" "mysql" {
   name        = local.mysql_name_policy
   description = "A policy for ec2 instance"
-  policy      = file("Iam-policy-role")
+  policy      = file("policy-role-doc")
 }
 
 # Attach the policy to the user
@@ -41,6 +41,6 @@ resource "aws_iam_role_policy_attachment" "mysql" {
 
 # iam_instance_profile
 resource "aws_iam_instance_profile" "mysql" {
-  name = "${var.project}-${var.environment}-mysql"
+  name = "${var.project_name}-${var.env}-mysql"
   role = aws_iam_role.mysql.name
 }
