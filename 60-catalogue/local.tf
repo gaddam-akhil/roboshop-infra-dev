@@ -9,5 +9,5 @@ locals {
     Terraform = "true"
     Description = "tags for catalogue instance"
   }
-  backend_alb_listener_arn = data.aws_ssm_parameter.backend_alb_listener_arn.value
+  #backend_alb_listener_arn = data.aws_ssm_parameter.backend_alb_listener_arn.value
 }
