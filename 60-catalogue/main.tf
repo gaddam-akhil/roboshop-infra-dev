@@ -156,7 +156,7 @@ resource "aws_autoscaling_group" "catalogue" {
   dynamic "tag" {
     for_each = merge(
         {
-            Name = "${var.project}-${var.environment}-catalogue"
+            Name = "${var.project_name}-${var.env}-catalogue"
         },
         local.common_tags
     )
@@ -174,7 +174,7 @@ resource "aws_autoscaling_group" "catalogue" {
 
 resource "aws_autoscaling_policy" "catalogue" {
   autoscaling_group_name = aws_autoscaling_group.catalogue.name
-  name                   = "${var.project}-${var.environment}-catalogue"
+  name                   = "${var.project_name}-${var.env}-catalogue"
   policy_type            = "TargetTrackingScaling"
   estimated_instance_warmup = 120
 
