@@ -6,3 +6,6 @@ variable "env" {
     default = "dev"
 }
 
+variable "domain_name" {
+    default = "gaddam.online"
+}
