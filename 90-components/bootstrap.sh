@@ -2,6 +2,7 @@
 
 component=$1
 env=$2
+app_version=$3
 dnf install ansible -y
 
 #/home/ec2-user ane dir clone chestunam
@@ -12,4 +13,5 @@ git clone https://github.com/gaddam-akhil/ansible-roboshop-roles-terraform.git
 
 cd ansible-roboshop-roles-terraform 
 git pull
-ansible-playbook -e component=$component -e env=$env roboshop.yaml 
+#ansible-playbook -e component=$component -e env=$env roboshop.yaml 
+ansible-playbook -e component=$component -e env=$env -e app_version=$app_version roboshop.yaml

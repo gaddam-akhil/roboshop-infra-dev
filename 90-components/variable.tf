@@ -1,24 +1,28 @@
-variable "component" {
+variable "components" {
     default = {
-       # backend components are attaching to backend ALB
+        # backend components are attaching to backend ALB
         catalogue = {
             rule_priority = 10
         }
-         user = {
+        user = {
             rule_priority = 20
         }
-           cart = {
+        cart = {
             rule_priority = 30
         }
-          shipping = {
+        shipping = {
             rule_priority = 40
         }
         payment = {
             rule_priority = 50
         }
-        #frontend attaching  to frontend alb
-            frontend = {
+        # this is attaching to frontend ALB, there is only component there
+        frontend = {
             rule_priority = 10
         }
     }
+}
+
+variable "app_version" {
+    default = "v3"
 }
