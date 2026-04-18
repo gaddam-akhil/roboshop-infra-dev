@@ -45,7 +45,7 @@ resource "aws_ec2_instance_state" "catalogue" {
 } 
 
 resource "aws_ami_from_instance" "catalogue" {
-  name               = "${var.project_name}-${var.env}-catalogue"
+  name               = "${var.project_name}-${var.env}-catalogue-${var.app_version}-${aws_instance.catalogue.id}"
   source_instance_id = aws_instance.catalogue.id
   depends_on = [aws_ec2_instance_state.catalogue]
 
@@ -63,8 +63,9 @@ resource "aws_lb_target_group" "catalogue" {
   protocol = "HTTP"
   vpc_id   = local.vpc_id
   deregistration_delay = 60
+
   health_check  {
-    enabled = true
+    #enabled = true
     healthy_threshold = 2
     interval = 10
     matcher = "200-299"
@@ -84,6 +85,8 @@ resource "aws_launch_template" "catalogue" {
   instance_initiated_shutdown_behavior = "terminate"
   instance_type = "t3.micro"
   vpc_security_group_ids = [local.catalogue_sg_id]
+
+   # each time we apply terraform this version will be updated as default
   update_default_version = true
 
   #Tags for instance created by launch template to auto scaling
@@ -168,6 +171,7 @@ resource "aws_autoscaling_group" "catalogue" {
     }
   }
 
+ # with in 15min autoscaling should be successful
   timeouts {
     delete = "15m"
   }
