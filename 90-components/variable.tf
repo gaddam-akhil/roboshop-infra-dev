@@ -16,7 +16,7 @@ variable "component" {
         payment = {
             rule_priority = 50
         }
-        frontend attaching  to frontend alb
+        #frontend attaching  to frontend alb
             frontend = {
             rule_priority = 10
         }
