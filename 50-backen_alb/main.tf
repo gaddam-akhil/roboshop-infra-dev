@@ -37,6 +37,7 @@ resource "aws_route53_record" "www" {
   name    = "*.backend-alb-${var.env}.${var.domain_name}"  #*.backend-alb-dev.gaddam.online
   type    = "A"
 
+    # load balancer details
   alias {
     name                   = aws_lb.backend_alb.dns_name
     zone_id                = aws_lb.backend_alb.zone_id
