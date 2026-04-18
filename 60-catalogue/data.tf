@@ -30,7 +30,6 @@ data "aws_ssm_parameter" "vpc_id" {
     name = "/${var.project_name}/${var.env}/vpc_id"
 } 
 
-/* data "aws_ssm_parameter" "backend_alb_listener_arn" {
-    name = "/${var.project_name}/${var.env}/backend_alb_listener_arn"
-    #target_group_arns = [aws_lb_target_group.catalogue.arn]
-} */
+data "aws_ssm_parameter" "backend_alb_listener_arn" {
+    name = "${var.project_name}-${var.env}-backend_alb_listener_arn"
+} 

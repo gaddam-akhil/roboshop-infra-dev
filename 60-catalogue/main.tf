@@ -128,7 +128,7 @@ resource "aws_launch_template" "catalogue" {
 
 }
 
-/* resource "aws_autoscaling_group" "catalogue" {
+resource "aws_autoscaling_group" "catalogue" {
   name                      = "${var.project_name}-${var.env}-catalogue"
   max_size                  = 10
   min_size                  = 1
@@ -156,6 +156,7 @@ resource "aws_launch_template" "catalogue" {
   dynamic "tag" {
     for_each = merge(
         {
+            
             Name = "${var.project_name}-${var.env}-catalogue"
         },
         local.common_tags
@@ -170,9 +171,9 @@ resource "aws_launch_template" "catalogue" {
   timeouts {
     delete = "15m"
   }
-}  */
+}  
 
-/* resource "aws_autoscaling_policy" "catalogue" {
+resource "aws_autoscaling_policy" "catalogue" {
   autoscaling_group_name = aws_autoscaling_group.catalogue.name
   name                   = "${var.project_name}-${var.env}-catalogue"
   policy_type            = "TargetTrackingScaling"
@@ -185,10 +186,10 @@ resource "aws_launch_template" "catalogue" {
 
     target_value = 70.0
   }
-} */
+} 
 
 # This depends on target group
-/* resource "aws_lb_listener_rule" "catalogue" {
+resource "aws_lb_listener_rule" "catalogue" {
   listener_arn = local.backend_alb_listener_arn
   priority     = 10
 
@@ -202,9 +203,9 @@ resource "aws_launch_template" "catalogue" {
       values = ["catalogue.backend-alb-${var.env}.${var.domain_name}"]
     }
   }
-} */
+} 
 
-/* resource "terraform_data" "catalogue_delete" {
+resource "terraform_data" "catalogue_delete" {
   triggers_replace = [
     aws_instance.catalogue.id
   ]
@@ -214,4 +215,4 @@ resource "aws_launch_template" "catalogue" {
   provisioner "local-exec" {
     command = "aws ec2 terminate-instances --instance-ids ${aws_instance.catalogue.id} "
   }
-} */
+}
